@@ -1,0 +1,33 @@
+<div class="app-shell">
+  <header class="site-header">
+    <div class="container header-content">
+      <a class="brand" routerLink="/" aria-label="Cafetería Las Rosas, inicio">
+        <span class="brand-mark">LR</span><span><strong>Las Rosas</strong><small>Cafetería</small></span>
+      </a>
+      <nav class="main-nav" aria-label="Navegación principal">
+        <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Inicio</a>
+        @if (auth.usuario()) { <a routerLink="/menu" routerLinkActive="active">Menú</a> }
+        @if (esCliente(auth.rol())) {
+          <a routerLink="/carrito" routerLinkActive="active">Carrito <span class="cart-count">{{ cartCount() }}</span></a>
+          <a routerLink="/cliente/pedidos" routerLinkActive="active">Mis pedidos</a>
+        }
+        @if (esPersonal(auth.rol())) { <a routerLink="/personal/pedidos" routerLinkActive="active">Operaciones</a> }
+        @if (auth.rol() === 'ADMIN') { <a routerLink="/admin/catalogo" routerLinkActive="active">Catálogo</a> }
+      </nav>
+      <div class="account-nav">
+        @if (auth.usuario(); as usuario) {
+          <span class="account-name">{{ usuario.nombres }} <small>{{ usuario.rol }}</small></span>
+          <button type="button" class="btn btn-sm btn-outline-light" (click)="cerrarSesion()">Salir</button>
+        } @else {
+          <a class="login-link" routerLink="/login">Ingresar</a>
+          <a class="btn btn-sm btn-light register-link" routerLink="/registro">Crear cuenta</a>
+        }
+      </div>
+    </div>
+  </header>
+  <main class="container page-content">
+    @if (errorSesion()) { <div class="alert alert-warning" role="alert">{{ errorSesion() }}</div> }
+    <router-outlet />
+  </main>
+  <footer class="site-footer"><div class="container d-flex flex-wrap justify-content-between gap-2"><span>© Cafetería Las Rosas</span><span>Un buen café siempre encuentra su momento.</span></div></footer>
+</div>

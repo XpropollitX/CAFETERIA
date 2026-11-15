@@ -1,0 +1,32 @@
+.app-shell { min-height: 100vh; display: flex; flex-direction: column; }
+.site-header { background: #422719; color: #fffaf5; box-shadow: 0 .25rem 1rem #28160f20; }
+.header-content { min-height: 5rem; display: flex; align-items: center; justify-content: space-between; gap: 1.25rem; padding-top: .75rem; padding-bottom: .75rem; }
+.brand { color: inherit; text-decoration: none; display: flex; align-items: center; gap: .7rem; flex: none; }
+.brand-mark { width: 2.8rem; height: 2.8rem; display: grid; place-items: center; border: 1px solid #d5a176; border-radius: 50%; color: #f0bc8d; font-family: Georgia, serif; font-size: 1.1rem; }
+.brand strong,.brand small { display: block; line-height: 1.15; }
+.brand strong { font-family: Georgia, serif; font-size: 1.1rem; }
+.brand small { color: #d7bba4; font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; }
+.main-nav,.account-nav { display: flex; align-items: center; gap: 1rem; }
+.main-nav a,.login-link { color: #f4e8dd; text-decoration: none; font-size: .92rem; white-space: nowrap; }
+.main-nav a:hover,.main-nav a.active,.login-link:hover { color: #f0bc8d; }
+.account-nav { flex: none; }
+.account-name { font-size: .9rem; line-height: 1.2; text-align: right; }
+.account-name small { display: block; color: #d7bba4; font-size: .7rem; letter-spacing: .08em; }
+.cart-count { display: inline-grid; place-items: center; min-width: 1.25rem; height: 1.25rem; padding: 0 .2rem; border-radius: 1rem; background: #e6a16c; color: #321b10; font-size: .72rem; font-weight: 700; }
+.register-link { color: #442719; font-weight: 700; }
+.page-content { flex: 1; padding-top: 2.5rem; padding-bottom: 3rem; }
+.site-footer { background: #efe3d7; color: #6b594b; font-size: .85rem; padding: 1.2rem 0; }
+
+@media (max-width: 991px) {
+  .header-content { flex-wrap: wrap; }
+  .main-nav { order: 3; width: 100%; overflow-x: auto; padding: .2rem 0; }
+  .account-nav { margin-left: auto; }
+}
+
+@media (max-width: 575px) {
+  .page-content { padding-top: 1.5rem; padding-bottom: 2rem; }
+  .main-nav { gap: 1.1rem; }
+  .main-nav a { font-size: .86rem; }
+  .account-name { display: none; }
+  .site-footer .container { flex-direction: column; }
+}
